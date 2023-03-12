@@ -19,3 +19,5 @@ The details are displayed on the browser:
 - The total number of checks at each check
 - The time of the last check
 
+## How to Install and Run this App
+
