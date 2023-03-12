@@ -12,20 +12,14 @@ function Music() {
         try {
             const {data} = await axios.get("http://localhost:5000/");
             data.forEach(item => {
-                let index = 0;
-                setInterval(() => {
-                    // if (index === item.length) {
-                    //     index = 0;
-                    // }
-                    var singleList = item[index++];
-                    if (singleList.artistName.search("Bob Marley") || singleList.artistName.search("Brenda Fassie") || singleList.artistName.search("Fela Kuti")) {
-                        setData(singleList);
+                item.forEach(singleItem => {
+                    if (item[item.length - 1] === singleItem) {
+                        setData(singleItem);
+                        setCounter((counter) => (counter + 1));
+                        console.log(singleItem);
                     }
-                    setCounter((counter) => (counter + 1));
-                    setTime(() => new Date().toLocaleTimeString());
-                }, 10000);
+                });
             });
-
         } catch (error) {
             console.log(error.message);
         }
@@ -33,12 +27,12 @@ function Music() {
 
     useEffect(() => {
         getData();
-    }, []);
+    }, [data]);
 
-
+    
     return (
             <section>
-                <div>
+                <div key={data.id}>
                     <div className="box" id="heading">
                         <h1>{data.artistName ? data.artistName : 'Name of Musician'}</h1>
                     </div>
@@ -52,11 +46,11 @@ function Music() {
                         <span className="count">{counter}</span>
                     </div>
                     <div className="box">
-                        <span className="count2">Last Check: {time}</span>
+                        <span className="count2">Last Check: {data.createdAt}</span>
                     </div>
                 </div>
             </section>
-          )
-        }
+        )
+    }
 
 export default Music;
