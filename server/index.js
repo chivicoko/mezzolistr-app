@@ -111,6 +111,7 @@ app.get('/', (req, res) => {
                 // res.send(element);
             });
             res.send([musics]);
+            // res.end(JSON.stringify(musics));    // this is returning as json
         }
     });
 });
