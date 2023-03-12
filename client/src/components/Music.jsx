@@ -1,25 +1,28 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
-import { track } from 'dic';
 
 
 function Music() {
 
     const [data, setData] = useState([]);
+    const [counter, setCounter] = useState(0);
+    const [time, setTime] = useState(new Date().toLocaleTimeString());
 
     const getData = async () => {
         try {
             const {data} = await axios.get("http://localhost:5000/");
             data.forEach(item => {
                 let index = 0;
-                const loopName = setInterval(() => { 
-                    if (index === item.length) {
-                        index = 0;
-                    }
+                setInterval(() => {
+                    // if (index === item.length) {
+                    //     index = 0;
+                    // }
                     var singleList = item[index++];
                     if (singleList.artistName.search("Bob Marley") || singleList.artistName.search("Brenda Fassie") || singleList.artistName.search("Fela Kuti")) {
                         setData(singleList);
                     }
+                    setCounter((counter) => counter + 1);
+                    setTime((time) => new Date().toLocaleTimeString());
                 }, 10000);
             });
 
@@ -28,9 +31,16 @@ function Music() {
         }
     }
 
+    // const changeByInterval = () => {
+    //     setCounter(counter + 1);
+    //     setTime(time);
+    // }
+
     useEffect(() => {
         getData();
+        // changeByInterval();
     }, []);
+
 
 
     return (
@@ -46,12 +56,11 @@ function Music() {
                     </div>
         
                     <div className="box">
-                        <span className="count">200</span>
+                        <span className="count">{counter}</span>
                     </div>
                     <div className="box">
-                        <span className="count2">Last Check: {new Date().toLocaleTimeString().replace(/(.*)\D\d+/, '$1')}</span>
+                        <span className="count2">Last Check: {time}</span>
                     </div>
-                    {/* <footer>Copyright &copy;2023 The WebzTor</footer> */}
                 </div>
             </section>
           )
