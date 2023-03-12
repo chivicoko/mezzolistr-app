@@ -14,6 +14,14 @@ function Music() {
             data.forEach(item => {
                 item.forEach(singleItem => {
                     if (item[item.length - 1] === singleItem) {
+                        const year = new Date(singleItem.createdAt).getFullYear();
+                        const month = new Date(singleItem.createdAt).getUTCMonth();
+                        const day = new Date(singleItem.createdAt).getDate();
+                        const hour = new Date(singleItem.createdAt).getHours();
+                        const min = new Date(singleItem.createdAt).getMinutes();
+                        const sec = new Date(singleItem.createdAt).getSeconds();
+                        var dateTimeString = day+'/'+ parseInt(month+1) +'/'+year+' '+hour+':'+min+':'+sec;
+                        setTime(dateTimeString);
                         setData(singleItem);
                         setCounter((counter) => (counter + 1));
                         console.log(singleItem);
@@ -46,7 +54,7 @@ function Music() {
                         <span className="count">{counter}</span>
                     </div>
                     <div className="box">
-                        <span className="count2">Last Check: {data.createdAt}</span>
+                        <span className="count2">Last Check: {time}</span>
                     </div>
                 </div>
             </section>
