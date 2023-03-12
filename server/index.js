@@ -8,21 +8,6 @@ import mongoose from 'mongoose';
 const app = express();
 app.use(cors());
 
-const namer = (value) => {
-    const musicians = ['Bob Marley', 'Brenda Fassie', 'Fela Kuti'];
-    let index = 0;
-
-    const loopName = setInterval(() => { 
-        if (index === musicians.length) { 
-            // clearInterval(loop) 
-            index = 0;
-        } 
-        console.log(musicians[index++]);
-        value = musicians[index++];
-    }, 5000);
-}
-// console.log(namer());
-
 // ------db connection-------
 mongoose.connect(process.env.DB_URI, {useNewUrlParser:true})
 .then(() => {
@@ -49,7 +34,7 @@ const MusicModel = mongoose.model("Music", musicSchema);
 const options = {
     method: 'GET',
     url: 'https://genius-song-lyrics1.p.rapidapi.com/search/',
-    params: {q: 'Fela Kuti', per_page: '20', page: '3'},
+    params: {q: 'Bob Marley', per_page: '20', page: '1'},
     headers: {
       'X-RapidAPI-Key': process.env.REACT_APP_API_KEY,
       'X-RapidAPI-Host': process.env.REACT_APP_API_HOST
@@ -79,9 +64,6 @@ const options = {
             } else {
                 // console.log(musics)
                 musics.forEach(element => {
-                    // console.log(`No. ${count} => `);
-                    // console.log(element);
-                    // console.log(`_____________________`);
                     count++;
                 });
                 count === musics.length + 1 ? console.log(`This is page ${options.params.page} of the result, with a total of ${count - 1} tracks.`) : '';
@@ -101,17 +83,7 @@ app.get('/', (req, res) => {
         if (err) {
             console.log(err);
         } else {
-            // console.log(musics)
-            musics.forEach(element => {
-                // console.log(`No. ${count} => `);
-                // console.log(element);
-                // console.log(`_____________________`);
-                // count++;
-                // res.send(`"Hello! I am a Software Engineer!!" ${element}`);
-                // res.send(element);
-            });
             res.send([musics]);
-            // res.end(JSON.stringify(musics));    // this is returning as json
         }
     });
 });
@@ -122,48 +94,3 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}...`);
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//   'https://genius-song-lyrics1.p.rapidapi.com/search/?q=Bob+Marley&per_page=10&page=1',
-
-//   ________________________________
-// var name = 'Bob+Marley';
-// const fetchData = async (url) => {
-//     try {
-//         const {data} = await axios(`https://genius-song-lyrics1.p.rapidapi.com/search/?q=${name}`);
-
-//         if (data) {
-//             console.log(data);
-//         } else {
-//             console.log("Nothing here");
-//         }
-
-//     } catch (error) {
-//         console.log(error.response);
-//     }
-// }
-// ________________________________

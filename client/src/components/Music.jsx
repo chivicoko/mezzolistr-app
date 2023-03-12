@@ -21,8 +21,8 @@ function Music() {
                     if (singleList.artistName.search("Bob Marley") || singleList.artistName.search("Brenda Fassie") || singleList.artistName.search("Fela Kuti")) {
                         setData(singleList);
                     }
-                    setCounter((counter) => counter + 1);
-                    setTime((time) => new Date().toLocaleTimeString());
+                    setCounter((counter) => (counter + 1));
+                    setTime(() => new Date().toLocaleTimeString());
                 }, 10000);
             });
 
@@ -31,16 +31,9 @@ function Music() {
         }
     }
 
-    // const changeByInterval = () => {
-    //     setCounter(counter + 1);
-    //     setTime(time);
-    // }
-
     useEffect(() => {
         getData();
-        // changeByInterval();
     }, []);
-
 
 
     return (
