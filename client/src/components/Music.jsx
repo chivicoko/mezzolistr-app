@@ -21,10 +21,11 @@ function Music() {
                         const min = new Date(singleItem.createdAt).getMinutes();
                         const sec = new Date(singleItem.createdAt).getSeconds();
                         var dateTimeString = day+'/'+ parseInt(month+1) +'/'+year+' '+hour+':'+min+':'+sec;
+
                         setTime(dateTimeString);
                         setData(singleItem);
                         setCounter((counter) => (counter + 1));
-                        console.log(singleItem);
+                        // console.log(singleItem);
                     }
                 });
             });
