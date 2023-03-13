@@ -23,9 +23,9 @@ The details are displayed on the browser:
 
 ### Install/Update
 
-Change directory into the 'mezzolistr-app' directory
+Change directory into the 'mezzolistr-app' directory ```cd mezzolistr-app```
 
-#### Some dependencies you may need to install or update for your OS
+#### Some dependencies you may need to install or update for your OS:
 npm, node, mongoose, express, concurrently, cors, dotenv
 
 ### Run
