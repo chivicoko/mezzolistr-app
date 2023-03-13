@@ -1,5 +1,5 @@
 # Mezzolistr Music App
-![Roadmap](./roadmap.png)
+![Roadmap](./african_music_img.jpg)
 
 ## Description
 
