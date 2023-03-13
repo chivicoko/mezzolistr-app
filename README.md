@@ -32,7 +32,11 @@ $ cd mezzolistr-app
 npm, node, mongoose, express, concurrently, cors, dotenv
 
 ### Run
-To run this app, navigate into the 'server' directory ```cd server```. Then:
+To run this app, navigate into the 'server' directory
+```sh
+$ cd server
+```
+Then:
 - To run the server, use ```npm run server```
 - To run the client, use ```npm run client```
 - To run both the server and client concurrently (the 'build'), use ```npm run build```
