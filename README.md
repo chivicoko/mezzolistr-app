@@ -1,5 +1,5 @@
 # Mezzolistr Music App
-![African Music](./african_music_img.jpg)
+![African Music](./african_music_img2.jpg)
 
 ## Description
 
