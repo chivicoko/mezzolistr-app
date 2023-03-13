@@ -47,8 +47,8 @@ setInterval(() => {
     };
     
     axios.request(options).then(function (response) {
-        const resLs = response.data.hits;
         var count = 1;
+        const resLs = response.data.hits;
         resLs.forEach(element => {
             // Inserting into the database
             const music = new MusicModel({
@@ -84,10 +84,15 @@ setInterval(() => {
 
 app.get('/', (req, res) => {
       // Fetching from the database
+    //   var count = 1;
       MusicModel.find((err, musics) => {
         if (err) {
             console.log(err);
         } else {
+            // musics.forEach(element => {
+            //     count++;
+            // });
+            // count === musics.length + 1 ? console.log(`This is page ${options.params.page} of the result, with a total of ${count - 1} tracks.`) : '';
             res.send([musics]);
         }
     });
