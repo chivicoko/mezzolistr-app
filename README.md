@@ -22,7 +22,10 @@ The details are displayed on the browser:
 ## How to Install and Run this App
 
 ### Install/Update
-##### Some dependencies you may need to install or update for your OS
+
+Change directory into the 'mezzolistr-app' directory
+
+#### Some dependencies you may need to install or update for your OS
 npm, node, mongoose, express, concurrently, cors, dotenv
 
 ### Run
